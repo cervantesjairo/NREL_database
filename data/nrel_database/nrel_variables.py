@@ -3,20 +3,33 @@ import pandas as pd
 
 
 class NrelVar(NrelPSM):
+    # """
+    # This Class Object is a child class of NrelPSM that has the API information to pull NREL data. The class has
+    # a special method named __init__ and function definition.
+    # - The especial method includes var, lat, lon, period_range_from, period_range_to
+    # - The definition pulls data from database and cleans it to return a dataframe
+    # :param var: Variables, e.g., 'ghi,dhi,dni,clearsky_ghi,wind_direction,wind_speed,air_temperature,total_precipitable_water,solar_zenith_angle,surface_albedo'
+    # :param lat: Latitud, e.g., 4.6095
+    # :param lon: Longitud, e.g., -74.0685
+    # :param period_range_from: datetime(2020, 1, 1)
+    # :param period_range_to: datetime(2020, 12, 31)
+    #
+    # :returns df: dataframe with the set of solar and meteorological data fields from NREL
+    # """
     """
-    This Class Object is a child class of NrelPSM that has the API information to pull NREL data. The class has
-    a special method named __init__ and function definition.
-    - The especial method includes var, lat, lon, period_range_from, period_range_to
-    - The definition pulls data from database and cleans it to return a dataframe
-    :param var: Variables, e.g., 'ghi,dhi,dni,clearsky_ghi,wind_direction,wind_speed,air_temperature,total_precipitable_water,solar_zenith_angle,surface_albedo'
-    :param lat: Latitud, e.g., 4.6095
-    :param lon: Longitud, e.g., -74.0685
-    :param period_range_from: datetime(2020, 1, 1)
-    :param period_range_to: datetime(2020, 12, 31)
+    This code defines a class named "NrelVar" which is a child class of the "NrelPhysicalSolarModel" class, and it includes a method named "init" and a function named "data_variables".
 
-    :returns df: dataframe with the set of solar and meteorological data fields from NREL
+    The "init" method takes in five parameters:
+
+    var: a string of variables separated by commas that represents the variables of interest from the NREL data base. If not provided, the default variables will be used.
+    lon: a float that represents the longitude of the location of interest.
+    lat: a float that represents the latitude of the location of interest.
+    period_range_from: a datetime object that represents the start date of the period of interest.
+    period_range_to: a datetime object that represents the end date of the period of interest.
+    The "data_variables" function returns a pandas dataframe with the set of solar and meteorological data fields from the NREL database. It pulls data from the NREL database for the given latitude and longitude and period of interest. The data is downloaded in chunks of years and then concatenated. The resulting dataframe is cleaned by renaming columns and dropping unnecessary columns.
+
+    The NrelVar class is intended to be used as a way to access NREL data for a specific location and time period, and it provides flexibility in choosing the variables of interest.
     """
-
     def __init__(self, var, lon, lat, period_range_from, period_range_to):
         super().__init__()
         self.lon = lon

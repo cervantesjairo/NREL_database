@@ -8,7 +8,13 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 
+"""
+The code is a Python script that creates a dashboard using Dash, a web application framework for Python. The dashboard allows the user to select one or more NREL (National Renewable Energy Laboratory) variables, specify latitude and longitude, and a date range. Upon clicking the "Ejecutar" (execute) button, the dashboard will generate four graphs using Plotly graph objects, which will display the selected NREL variables for the specified location and date range.
 
+The ui_variables variable is a list of dictionaries containing the names and values of the NREL variables that the user can select from using a dropdown menu. The app.layout variable creates the layout of the dashboard, which consists of a container with a header, four columns, and several rows. The first column contains the dropdown menu for selecting NREL variables, the second and third columns contain input fields for specifying latitude and longitude, and the fourth column contains a date range picker and a button to execute the dashboard. The second container contains four graphs that will display the selected NREL variables upon execution of the dashboard.
+
+The @app.callback decorator specifies the function that will be called upon the button click event. The function takes the number of button clicks and the values of the dropdown menu, latitude, longitude, and date range as inputs. The function uses the values of these inputs to query the NREL database using the NrelVar class and generates four graphs using Plotly graph objects, which are then returned as outputs to the dashboard.
+"""
 ui_variables = [{'label': 'Global Horizontal Irradiation (GHI)',    'value': 'ghi'},
                 {'label': 'Diffuse Horizontal Irradiance (DHI)',    'value': 'dhi'},
                 {'label': 'Direct Normal Irradiation (DNI)',        'value': 'dni'},
