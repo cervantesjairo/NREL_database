@@ -2,6 +2,9 @@
 # # https://developer.nrel.gov/docs/solar/nsrdb/psm3-download/
 # # https://developer.nrel.gov/docs/solar/nsrdb/python-examples/
 # # https://docs.python.org/3/library/string.html#format-string-syntax
+# # https://sam.nrel.gov/images/web_page_files/sam-help-2020-2-29-r2_weather_file_formats.pdf
+
+"NOTE: wind speed output at 10 meters"
 
 class NrelPhysicalSolarModel:
     '''

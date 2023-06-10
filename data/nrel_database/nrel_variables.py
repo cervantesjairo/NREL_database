@@ -68,7 +68,7 @@ class NrelVar(NrelPSM):
 
 
         '''
-        DataFrame Cleaning  
+        DataFrame Cleaning  #TODO need to scale wind speed at height 
         '''
         df = df0.loc[self.period_range_from: self.period_range_to]
 
