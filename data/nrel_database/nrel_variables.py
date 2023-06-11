@@ -1,6 +1,6 @@
 from data.api.api_nrel import NrelPhysicalSolarModel as NrelPSM
 import pandas as pd
-
+from datetime import datetime, timedelta
 
 class NrelVar(NrelPSM):
     # """
@@ -70,7 +70,11 @@ class NrelVar(NrelPSM):
         '''
         DataFrame Cleaning  #TODO need to scale wind speed at height 
         '''
-        df = df0.loc[self.period_range_from: self.period_range_to]
+        start_date = datetime.strptime(self.period_range_to, '%Y-%m-%d')
+        end_date = start_date.replace(hour=23)
+        end_date_str = end_date.strftime('%Y-%m-%dT%H:%M:%S')
+
+        df = df0.loc[self.period_range_from: end_date_str] #TODO: fix teh hour range
 
         new_column_name = {'datetime': 'datetime',
                            'GHI': 'ghi',
